@@ -43,7 +43,7 @@ app.post('/webhook/', function (req, res) {
                 continue
             }
 
-            else if (text == 'Wonder'){
+            else if (text === 'Wonder'){
             //do something
             sendSpecificMessage(sender)
             continue

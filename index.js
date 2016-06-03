@@ -77,12 +77,12 @@ function sendGenericMessage(sender) {
                 "template_type": "generic",
                 "elements": [{
                     "title": "First card",
-                    "subtitle": "Element #1 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+                    "subtitle": "First element",
+                    "image_url": "http://i280.photobucket.com/albums/kk176/shruti28009/d2_zps5k4xcryx.jpg",
                     "buttons": [{
                         "type": "web_url",
                         "url": "https://www.messenger.com",
-                        "title": "web url"
+                        "title": "Messenger URL"
                     }, {
                         "type": "postback",
                         "title": "Postback",
@@ -90,9 +90,13 @@ function sendGenericMessage(sender) {
                     }],
                 }, {
                     "title": "Second card",
-                    "subtitle": "Element #2 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                    "subtitle": "second element",
+                    "image_url": "http://i280.photobucket.com/albums/kk176/shruti28009/d1_zps2gztnqo1.png",
                     "buttons": [{
+                        "type": "web_url",
+                        "url": "https://www.messenger.com",
+                        "title": "Messenger URL"
+                    }, {
                         "type": "postback",
                         "title": "Postback",
                         "payload": "Payload for second element in a generic bubble",

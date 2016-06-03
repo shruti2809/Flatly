@@ -42,9 +42,7 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
-            else if (true) {
-
-            } (text === 'Cartoons') {
+            else if (text === 'Cartoons') {
                 sendCartoonMessage(sender)
                 continue
             }

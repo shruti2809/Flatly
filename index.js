@@ -42,6 +42,12 @@ app.post('/webhook/', function (req, res) {
                 sendGenericMessage(sender)
                 continue
             }
+            else if (true) {
+
+            } (text === 'Cartoons') {
+                sendCartoonMessage(sender)
+                continue
+            }
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
         }
     }
@@ -96,6 +102,59 @@ function sendGenericMessage(sender) {
                         "type": "web_url",
                         "url": "https://www.messenger.com",
                         "title": "Messenger URL"
+                    }, {
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for second element in a generic bubble",
+                    }],
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
+
+function sendCartoonMessage(sender) {
+    let messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "First card",
+                    "subtitle": "First element",
+                    "image_url": "http://i280.photobucket.com/albums/kk176/shruti28009/c1_zpsmpvokudw.jpg",
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": "https://garfield.com/",
+                        "title": "Garfield's website URL"
+                    }, {
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for first element in a generic bubble",
+                    }],
+                }, {
+                    "title": "Second card",
+                    "subtitle": "second element",
+                    "image_url": "http://i280.photobucket.com/albums/kk176/shruti28009/c2_zpskdjdv5yx.jpg",
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": "https://www.facebook.com/TomandJerry/",
+                        "title": "Jerry's fb page URL"
                     }, {
                         "type": "postback",
                         "title": "Postback",

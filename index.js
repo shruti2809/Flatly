@@ -50,10 +50,10 @@ app.post('/webhook/', function (req, res) {
                 sendReplyToHiMessage(sender)
                 continue
             }
-            else (text) {
-              sendSorryMessage(sender)
-              continue
-            }
+            // else (text) {
+            //   sendSorryMessage(sender)
+            //   continue
+            // }
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
         }
     }

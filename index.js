@@ -50,7 +50,7 @@ app.post('/webhook/', function (req, res) {
                 sendReplyToHiMessage(sender)
                 continue
             }
-            else {
+            else (text != null) {
               sendSorryMessage(sender)
               continue
             }

@@ -46,7 +46,7 @@ app.post('/webhook/', function (req, res) {
                 sendCartoonMessage(sender)
                 continue
             }
-            else if (text === 'hi'|| text === "Hi" || text === "Hello") {
+            else if (text === 'hi'|| text === 'Hi' || text === 'Hello') {
                 sendReplyToHiMessage(sender)
                 continue
             }
@@ -191,7 +191,7 @@ function sendReplyToHiMessage(sender) {
                 "template_type": "generic",
                 "elements": [{
                     "title": "Hi there! I am flatshare Bot. Can you tell me what are you looking for?",
-                    //"subtitle": "First element",
+                    "subtitle": "",
                   //"image_url": "http://i280.photobucket.com/albums/kk176/shruti28009/c1_zpsmpvokudw.jpg",
                     "buttons": [{
                         "type": "postback",
@@ -203,7 +203,7 @@ function sendReplyToHiMessage(sender) {
                           "type": "postback",
                           //"url": "https://garfield.com/",
                           "title": "2. Flatmate",
-                          "payload": "Payload for first element in a generic bubble",
+                          "payload": "Payload for second element in a generic bubble",
                       }
                     }],
                 }]

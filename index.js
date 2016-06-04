@@ -52,7 +52,7 @@ app.post('/webhook/', function (req, res) {
             }
             else {
               sendSorryMessage(sender)
-            //  continue
+              continue
             }
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
         }

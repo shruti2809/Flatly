@@ -50,10 +50,6 @@ app.post('/webhook/', function (req, res) {
                 sendReplyToHiMessage(sender)
                 continue
             }
-            // else (text) {
-            //   sendSorryMessage(sender)
-            //   continue
-            // }
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
         }
     }
@@ -208,36 +204,6 @@ function sendReplyToHiMessage(sender) {
                           "title": "2. Flatmate",
                           "payload": "Payload for second element in a generic bubble",
                     }],
-                }]
-            }
-        }
-    }
-    request({
-        url: 'https://graph.facebook.com/v2.6/me/messages',
-        qs: {access_token:token},
-        method: 'POST',
-        json: {
-            recipient: {id:sender},
-            message: messageData,
-        }
-    }, function(error, response, body) {
-        if (error) {
-            console.log('Error sending messages: ', error)
-        } else if (response.body.error) {
-            console.log('Error: ', response.body.error)
-        }
-    })
-}
-function sendSorryMessage(sender) {
-    let messageData = {
-        "attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "Oops! I didn't understand that. Type 'help' to know what I can do.",
-                    //"subtitle": "",
-                  //"image_url": "http://i280.photobucket.com/albums/kk176/shruti28009/c1_zpsmpvokudw.jpg",
                 }]
             }
         }

@@ -199,12 +199,10 @@ function sendReplyToHiMessage(sender) {
                         "title": "1. Room in a flat",
                         "payload": "Payload for first element in a generic bubble",
                     }, {
-                      {
                           "type": "postback",
                           //"url": "https://garfield.com/",
                           "title": "2. Flatmate",
                           "payload": "Payload for second element in a generic bubble",
-                      }
                     }],
                 }]
             }

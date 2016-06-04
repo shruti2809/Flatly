@@ -46,7 +46,7 @@ app.post('/webhook/', function (req, res) {
                 sendCartoonMessage(sender)
                 continue
             }
-            else if (text === 'hi') {
+            else if (text === 'hi'|| text === 'Hi'|| text === 'Hello') {
                 sendReplyToHiMessage(sender)
                 continue
             }

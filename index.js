@@ -46,6 +46,10 @@ app.post('/webhook/', function (req, res) {
                 sendCartoonMessage(sender)
                 continue
             }
+            else if (text === 'hi'|| text === "Hi" || text === "Hello") {
+                sendReplyToHiMessage(sender)
+                continue
+            }
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
         }
     }
@@ -157,6 +161,50 @@ function sendCartoonMessage(sender) {
                         "type": "postback",
                         "title": "Postback",
                         "payload": "Payload for second element in a generic bubble",
+                    }],
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+    })
+}
+// Reply to "hi" or "Hi" or "Hello"
+function sendReplyToHiMessage(sender) {
+    let messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Hi there! I am flatshare Bot. Can you tell me what are you looking for?",
+                    //"subtitle": "First element",
+                  //"image_url": "http://i280.photobucket.com/albums/kk176/shruti28009/c1_zpsmpvokudw.jpg",
+                    "buttons": [{
+                        "type": "postback",
+                        //"url": "https://garfield.com/",
+                        "title": "1. Room in a flat",
+                        "payload": "Payload for first element in a generic bubble",
+                    }, {
+                      {
+                          "type": "postback",
+                          //"url": "https://garfield.com/",
+                          "title": "2. Flatmate",
+                          "payload": "Payload for first element in a generic bubble",
+                      }
                     }],
                 }]
             }

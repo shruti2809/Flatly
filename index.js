@@ -247,7 +247,7 @@ function sendReplyToRoomMessage(sender) {
                           "payload": "Payload for second element in a generic bubble",
                     }, {
                           "type": "postback",
-                          "title": "2. Three or more Rooms",
+                          "title": "3. Three or more Rooms",
                           "payload": "Payload for third element in a generic bubble",
                     }],
                 }]

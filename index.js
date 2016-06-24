@@ -275,7 +275,7 @@ function sendReplyToRoomMessage(sender) {
     })
 
 
-    function sendReplyToRoomMessage(sender) {
+    function sendReplyToFlatmateMessage(sender) {
         let messageData = {
             "attachment": {
                 "type": "template",

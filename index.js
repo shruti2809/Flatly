@@ -273,8 +273,7 @@ function sendReplyToRoomMessage(sender) {
             console.log('Error: ', response.body.error)
         }
     })
-
-
+}
     function sendReplyToFlatmateMessage(sender) {
         let messageData = {
             "attachment": {
@@ -283,7 +282,6 @@ function sendReplyToRoomMessage(sender) {
                     "template_type": "generic",
                     "elements": [{
                         "title": "Thanks, and how many flatmates are you looking for? :)",
-                        //"subtitle": "",
                         "buttons": [{
                             "type": "postback",
                             "title": "1. One flatmate",
@@ -312,4 +310,4 @@ function sendReplyToRoomMessage(sender) {
                 console.log('Error: ', response.body.error)
             }
         })
-    }
+}

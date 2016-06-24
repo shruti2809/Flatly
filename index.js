@@ -46,12 +46,16 @@ app.post('/webhook/', function (req, res) {
                 sendCartoonMessage(sender)
                 continue
             }
-            else if (text === 'hi'|| text === 'Hi'|| text === 'Hello') {
+            else if (text === 'hi'|| text === 'Hi'|| text === 'Hello' || text === 'hello' || text === 'Hey') {
                 sendReplyToHiMessage(sender)
                 continue
             }
             else if (text === '1. Room in a flat') {
                 sendReplyToRoomMessage(sender)
+                continue
+            }
+            else if (text === '2. Flatmate') {
+                sendReplyToFlatmateMessage(sender)
                 continue
             }
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
@@ -269,4 +273,43 @@ function sendReplyToRoomMessage(sender) {
             console.log('Error: ', response.body.error)
         }
     })
-}
+
+
+    function sendReplyToRoomMessage(sender) {
+        let messageData = {
+            "attachment": {
+                "type": "template",
+                "payload": {
+                    "template_type": "generic",
+                    "elements": [{
+                        "title": "Thanks, and how many flatmates are you looking for? :)",
+                        //"subtitle": "",
+                        "buttons": [{
+                            "type": "postback",
+                            "title": "1. One flatmate",
+                            "payload": "Payload for first element in a generic bubble",
+                        }, {
+                              "type": "postback",
+                              "title": "2. Two flatmates",
+                              "payload": "Payload for second element in a generic bubble",
+                        }],
+                    }]
+                }
+            }
+        }
+        request({
+            url: 'https://graph.facebook.com/v2.6/me/messages',
+            qs: {access_token:token},
+            method: 'POST',
+            json: {
+                recipient: {id:sender},
+                message: messageData,
+            }
+        }, function(error, response, body) {
+            if (error) {
+                console.log('Error sending messages: ', error)
+            } else if (response.body.error) {
+                console.log('Error: ', response.body.error)
+            }
+        })
+    }

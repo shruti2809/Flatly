@@ -58,6 +58,10 @@ app.post('/webhook/', function (req, res) {
                 sendReplyToFlatmateMessage(sender)
                 continue
             }
+            else if (text === '1. One Room' || text === "2. Two Rooms" || text === "3. Three or more Rooms") {
+                sendReplyToNoOfRoomMessage(sender)
+                continue
+            }
             sendTextMessage(sender, "Text received, echo: " + text.substring(0, 200))
         }
     }
@@ -309,5 +313,34 @@ function sendReplyToRoomMessage(sender) {
             } else if (response.body.error) {
                 console.log('Error: ', response.body.error)
             }
-        })
+      })
+}
+// Send Reply To No Of Room Message
+function sendReplyToNoOfRoomMessage(sender) {
+    let messageData = {
+        "attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "Thanks, and your area would be?",
+                }]
+            }
+        }
+    }
+    request({
+        url: 'https://graph.facebook.com/v2.6/me/messages',
+        qs: {access_token:token},
+        method: 'POST',
+        json: {
+            recipient: {id:sender},
+            message: messageData,
+        }
+    }, function(error, response, body) {
+        if (error) {
+            console.log('Error sending messages: ', error)
+        } else if (response.body.error) {
+            console.log('Error: ', response.body.error)
+        }
+  })
 }

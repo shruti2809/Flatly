@@ -324,8 +324,11 @@ function sendReplyToNoOfRoomMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "Thanks, and yor area would be?",
+                    "title": "Hi there! I am flatshare Bot. Can you tell me what are you looking for?",
                     //"subtitle": "",
+                    "buttons": [{
+                        "type": "postback",
+                    }],
                 }]
             }
         }

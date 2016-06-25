@@ -316,6 +316,7 @@ function sendReplyToRoomMessage(sender) {
       })
 }
 // Send Reply To No Of Room Message
+
 function sendReplyToNoOfRoomMessage(sender) {
     let messageData = {
         "attachment": {
@@ -323,7 +324,8 @@ function sendReplyToNoOfRoomMessage(sender) {
             "payload": {
                 "template_type": "generic",
                 "elements": [{
-                    "title": "Thanks, and your area would be?",
+                    "title": "Thanks, and yor area would be?",
+                    //"subtitle": "",
                 }]
             }
         }
@@ -342,5 +344,5 @@ function sendReplyToNoOfRoomMessage(sender) {
         } else if (response.body.error) {
             console.log('Error: ', response.body.error)
         }
-  })
+   })
 }

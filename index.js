@@ -58,7 +58,7 @@ app.post('/webhook/', function (req, res) {
                 sendReplyToFlatmateMessage(sender)
                 continue
             }
-            else if (payload === '1. One Room' || payload === "2. Two Rooms" || payload === "3. Three or more Rooms") {
+            else if (text === '1. One Room' || text === "2. Two Rooms" || text === "3. Three or more Rooms") {
                 sendReplyToNoOfRoomMessage(sender)
                 continue
             }
